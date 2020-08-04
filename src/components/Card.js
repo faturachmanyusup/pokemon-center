@@ -1,30 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Card extends Component {
-  showDetail() {
-    this.props.showDetail(this.props.pokemon.name);
+function Card(props) {
+  function showDetail() {
+    props.showDetail(props.pokemon.name);
   }
 
-  addToFav() {
-    this.props.addToFav(this.props.pokemon);
+  function addToFav() {
+    props.addToFav(props.pokemon);
   }
 
-  render() {
-    return (
-      <div className="card pokemon-card mt-5 col-2">
-        <img
-          onClick={() => this.showDetail()}
-          className="card-img-top pt-3"
-          alt={this.props.pokemon.name}
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.props.id}.svg`}
-        />
-          <div className="card-body">
-            <h5 className="card-title">{this.props.pokemon.name}</h5>
-            <button type="button" className="btn btn-sm mt-2" onClick={() => this.addToFav}>+ favorite</button>
-          </div>
-      </div>
-    )
+  function removeFromFav() {
+    props.removeFromFav(props.pokemon);
   }
+
+  const button = () => {
+    if (props.dashboard && !props.pokemon.favorited) {
+      return (
+        <button
+          type="button"
+          className="btn btn-sm add-fav mt-2"
+          onClick={() => addToFav()}
+        >+ favorite
+        </button>)
+    } else if(props.dashboard && props.pokemon.favorited) {
+      return (
+        <button
+          type="button"
+          className="btn btn-sm fav mt-2"
+        >favorited
+        </button>)
+    } else {
+      return (
+        <button
+          type="button"
+          className="btn btn-sm remove mt-2"
+          onClick={() => removeFromFav()}
+        >remove
+        </button>
+      )
+    }
+  }
+
+  return (
+    <div className="card pokemon-card mt-5 mb-3 col-2">
+      <img
+        className="card-img-top pt-3"
+        onClick= {() => showDetail()}
+        alt= {props.pokemon.name}
+        src= {`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.pokemon.id}.svg`}
+      />
+        <div className="card-body">
+          <h5 className="card-title">{props.pokemon.name}</h5>
+          {button()}
+        </div>
+    </div>
+  )
 }
 
 export default Card;

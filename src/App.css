@@ -16,13 +16,28 @@
   height: 80px;
 }
 
-.pokemon-card .btn {
+.pokemon-card .add-fav {
   background-color: #709fb0;
   color: beige;
 }
 
-.pokemon-card .btn:hover {
-  background-color: #2e4d58;
+.pokemon-card .fav {
+  background-color: #3eac63;
+  color: #fff;
+}
+
+.pokemon-card .remove {
+  background-color: #d64836;
+  color: beige;
+}
+
+.add-fav:hover {
+  background-color: #3b6270;
+}
+
+.remove:hover {
+  background-color: #744742;
+  color: #fff;
 }
 
 .pokemon-card:hover {

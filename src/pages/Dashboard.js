@@ -1,55 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '../components/Card';
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemons: []
-    };
+function Dashboard(props) {
+  function showDetail(pokemonName) {
+    props.showDetailParent(pokemonName);
   }
 
-  componentDidMount() {
-    const target = 'https://pokeapi.co/api/v2';
-    fetch(`${target}/pokemon?limit=200`)
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        pokemons: data.results
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  function addToFav(pokemon) {
+    props.addToFav(pokemon);
   }
 
-  showDetail(pokemonName) {
-    this.props.showDetailParent(pokemonName);
-  }
-
-  addToFav(pokemon) {
-    this.props.addToFav(pokemon);
-  }
-
-  render() {
-    return (
-      <div className="container">
+  return (
+    <div className="container">
+      { props.pokemons &&
         <div className="row">
-          {this.state.pokemons.map((pokemon, idx) => {
-            return (
-              <Card
-                key= {idx}
-                id= {idx + 1}
-                pokemon= {pokemon}
-                showDetail={(pokemonName) => this.showDetail(pokemonName)}
-                addToFav={(pokemon) => this.addToFav(pokemon)}
-              />
-            )
-          })}
-        </div>
-      </div>
-    );
-  }
+        {props.pokemons.results.map((pokemon, idx) => {
+          pokemon.id = idx + 1;
+          return (
+            <Card
+              key= {idx}
+              dashboard= {true}
+              pokemon= {pokemon}
+              showDetail={(pokemonName) => showDetail(pokemonName)}
+              addToFav={(pokemon) => addToFav(pokemon)}
+            />
+          )
+        })}
+      </div>}
+      { props.loading && <h1 className="row justify-content-center mt-5">wait a second...</h1> }
+      { props.error && <h1 className="row justify-content-center mt-5">{props.error}</h1> }
+    </div>
+  );
 }
 
 export default Dashboard;

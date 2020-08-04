@@ -1,60 +1,66 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { useState } from 'react';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import Detail from './pages/Detail';
 import Favorites from './pages/Favorites';
+import useData from './hooks/useData';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      pokemon: '',
-      page: 'dashboard',
-      newFav: null
-    };
-  }
+function App() {
+  const [pokemon, setPokemon] = useState('');
+  const [page, setPage] = useState('dashboard');
+  const [favorites, setFavorites] = useState([]);
+  const target = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+  const [pokemons, loading, error] = useData(target);
 
-  showDetailParent(pokemonName) {
-    this.setState({
-      pokemon: pokemonName,
-      page: 'detail'
-    });
+  function showDetailParent(pokemonName) {
+    setPokemon(pokemonName);
+    setPage('detail');
   }
   
-  redirect() {
-    this.setState({
-      page: 'dashboard'
-    });
+  function redirect(page) {
+    setPage(page);
   }
 
-  addToFav(pokemon) {
-    this.setState({
-      newFav: pokemon
-    })
+  function addToFav(pokemon) {
+    const newFavorites = favorites.concat(pokemon);
+    pokemons.results[pokemon.id - 1].favorited = true;
+    setFavorites(newFavorites);
   }
 
-  render() {
-    const thisPage = () => {
-      if (this.state.page === 'dashboard') {
-        return  <Dashboard
-                  showDetailParent={(pokemonName) => this.showDetailParent(pokemonName)} 
-                  addToFav={(pokemon) => this.addToFav(pokemon)}
-                />
-      } else if (this.state.page === 'favorites') {
-        return <Favorites showDetailParent={(pokemonName) => this.showDetailParent(pokemonName)} />
-      } else if(this.state.page === 'detail') {
-        return <Detail pokemonName={this.state.pokemon} />
-      }
+  function removeFromFav(pokemon) {
+    pokemons.results[pokemon.id - 1].favorited = false;
+    const newFav = favorites.filter(e => e !== pokemon);
+    setFavorites(newFav);
+  }
+  
+  function thisPage() {
+    if (page === 'dashboard') {
+      return (
+      <Dashboard
+        pokemons={pokemons}
+        loading={loading}
+        error={error}
+        showDetailParent= {(pokemonName) => showDetailParent(pokemonName)} 
+        addToFav= {(pokemon) => addToFav(pokemon)}
+      />)
+    } else if (page === 'favorites') {
+      return <Favorites
+        showDetailParent= {(pokemonName) => showDetailParent(pokemonName)}
+        removeFromFav= {(pokemon) => removeFromFav(pokemon)}
+        favorites= {favorites}
+      />
+    } else if(page === 'detail') {
+      return <Detail pokemonName={pokemon} />
     }
-
-    return (
-      <div className="App">
-        <Navbar redirect={(page) => this.redirect(page)} />
-        {thisPage()}
-      </div>
-    );
   }
+
+  return (
+    <div className="App">
+      <Navbar redirect= {(page) => redirect(page)} />
+      {thisPage()}
+    </div>
+  );
 }
 
 export default App;
