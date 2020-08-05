@@ -10,7 +10,7 @@ function App() {
   const [pokemon, setPokemon] = useState('');
   const [page, setPage] = useState('dashboard');
   const [favorites, setFavorites] = useState([]);
-  const target = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+  const target = 'https://pokeapi.co/api/v2/pokemon?limit=200';
   const [pokemons, loading, error] = useData(target);
 
   function showDetailParent(pokemonName) {
