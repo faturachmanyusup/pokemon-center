@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useData from '../hooks/useData';
 
-function Detail(props) {
+function Detail() {
   const { pokemonName } = useParams();
   const target = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
   const [pokemon, loading, error] = useData(target);
