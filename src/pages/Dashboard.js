@@ -2,10 +2,6 @@ import React from 'react';
 import Card from '../components/Card';
 
 function Dashboard(props) {
-  function showDetail(pokemonName) {
-    props.showDetailParent(pokemonName);
-  }
-
   function addToFav(pokemon) {
     props.addToFav(pokemon);
   }
@@ -21,7 +17,6 @@ function Dashboard(props) {
               key= {idx}
               dashboard= {true}
               pokemon= {pokemon}
-              showDetail={(pokemonName) => showDetail(pokemonName)}
               addToFav={(pokemon) => addToFav(pokemon)}
             />
           )

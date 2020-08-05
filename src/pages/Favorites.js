@@ -2,10 +2,6 @@ import React from 'react';
 import Card from '../components/Card';
 
 function Favorites(props) {
-  function showDetail(pokemonName) {
-    props.showDetailParent(pokemonName);
-  }
-
   function removeFromFav(pokemon) {
     props.removeFromFav(pokemon);
   }
@@ -20,7 +16,6 @@ function Favorites(props) {
               dashboard= {false}
               id= {pokemon.id}
               pokemon= {pokemon}
-              showDetail= {(pokemonName) => showDetail(pokemonName)}
               removeFromFav= {(pokemon) => removeFromFav(pokemon)}
             />
           )

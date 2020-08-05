@@ -1,27 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar(props) {
-  function redirect(page) {
-    props.redirect(page);
-  }
-
   return (
     <nav className="navbar navbar-expand-lg sticky-top">
       <div className="collapse navbar-collapse">
-        <button
+        <Link
           type="button"
           className="navbar-brand btn"
-          onClick={() => redirect('dashboard')}>
+          to="/">
             POKEMON CENTER
-        </button>
+        </Link>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0 btn">
           <li className="nav-item">
-            <button
+            <Link
               className="nav-link btn"
-              onClick={() => redirect('favorites')}
+              to="/favorites"
             >
               Favorites
-            </button>
+            </Link>
           </li>
           <li className="nav-item">
             <button className="nav-link btn">Detail</button>

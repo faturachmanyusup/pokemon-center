@@ -1,8 +1,12 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 function Card(props) {
+  const history = useHistory();
+  const { pathname } = useLocation();
+
   function showDetail() {
-    props.showDetail(props.pokemon.name);
+    history.push({pathname: `/detail/${props.pokemon.name}`});
   }
 
   function addToFav() {
@@ -14,7 +18,7 @@ function Card(props) {
   }
 
   const button = () => {
-    if (props.dashboard && !props.pokemon.favorited) {
+    if (pathname === '/' && !props.pokemon.favorited) {
       return (
         <button
           type="button"
@@ -22,7 +26,7 @@ function Card(props) {
           onClick={() => addToFav()}
         >+ favorite
         </button>)
-    } else if(props.dashboard && props.pokemon.favorited) {
+    } else if(pathname === '/' && props.pokemon.favorited) {
       return (
         <button
           type="button"
