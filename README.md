@@ -1,8 +1,8 @@
-# POKEMON CENTER
+## POKEMON CENTER
 
-## Features:
+### Features:
 
-### `-- show list of pokemons (default 200 pokemons)`
+### `-- show list of pokemons (default 200 pokemons)
 ### `-- add pokemon to favorites`
 ### `-- remove pokemon from favorites`
 ### `-- show detail pokemon`
