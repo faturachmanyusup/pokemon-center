@@ -10,10 +10,10 @@
 
 ***
 
-### CREDIT TO:
+### CREDIT:
 
-### -- [React](https://reactjs.org/ "react js")
-### -- [Redux](https://redux.js.org/ "redux")
-### -- [React Router](https://reactrouter.com/ "react-router-dom")
-### -- [React Redux](https://react-redux.js.org/ "react-redux")
-### -- [PokéAPI](https://pokeapi.co/ "PokéAPI")
+#### -- [React](https://reactjs.org/ "react js")
+#### -- [Redux](https://redux.js.org/ "redux")
+#### -- [React Router](https://reactrouter.com/ "react-router-dom")
+#### -- [React Redux](https://react-redux.js.org/ "react-redux")
+#### -- [PokéAPI](https://pokeapi.co/ "PokéAPI")
