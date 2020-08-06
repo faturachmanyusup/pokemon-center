@@ -1,9 +1,11 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function Card(props) {
   const history = useHistory();
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
   function showDetail() {
     history.push({pathname: `/detail/${props.pokemon.name}`});
@@ -11,10 +13,18 @@ function Card(props) {
 
   function addToFav() {
     props.addToFav(props.pokemon);
+    dispatch({
+      type: "ADD_TO_FAVORITES",
+      payload: { pokemon: props.pokemon }
+    })
   }
 
   function removeFromFav() {
     props.removeFromFav(props.pokemon);
+    dispatch({
+      type: "REMOVE_FROM_FAVORITES",
+      payload: { pokemon: props.pokemon }
+    })
   }
 
   const button = () => {

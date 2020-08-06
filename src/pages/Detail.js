@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useData from '../hooks/useData';
+import useData from '../hooks/useFetch';
 
 function Detail() {
   const { pokemonName } = useParams();
