@@ -1,0 +1,64 @@
+.navbar {
+  background-color: #f2feff;
+}
+
+.navbar a {
+  cursor: pointer;
+}
+
+.pokemon-card {
+  margin: 0 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.pokemon-card .card-img-top {
+  height: 80px;
+}
+
+.pokemon-card .add-fav {
+  background-color: #709fb0;
+  color: beige;
+}
+
+.pokemon-card .fav {
+  background-color: #3eac63;
+  color: #fff;
+}
+
+.pokemon-card .remove {
+  background-color: #d64836;
+  color: beige;
+}
+
+.add-fav:hover {
+  background-color: #3b6270;
+}
+
+.remove:hover {
+  background-color: #744742;
+  color: #fff;
+}
+
+.pokemon-card:hover {
+  background-color: blanchedalmond;
+  cursor: pointer;
+}
+
+.custom-container {
+  margin: 0 auto;
+}
+
+
+.detail .card {
+  width: 600px;
+}
+
+.detail .card-img-top {
+  height: 300px;
+}
+
+.detail span {
+  font-size: 17px;
+  text-align: center;
+}
