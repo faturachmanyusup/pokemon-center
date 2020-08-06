@@ -2,11 +2,11 @@
 
 ### Features:
 
-### `- show list of pokemons (default 200 pokemons)`
-### `- add pokemon to favorites`
-### `- remove pokemon from favorites`
-### `- show detail pokemon`
-### `- search pokemon by name`
+### - show list of pokemons (default 200 pokemons)
+### - add pokemon to favorites
+### - remove pokemon from favorites
+### - show detail pokemon
+### - search pokemon by name
 
 ***
 
