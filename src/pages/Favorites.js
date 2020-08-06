@@ -2,26 +2,14 @@ import React from 'react';
 import Card from '../components/Card';
 import { useSelector } from 'react-redux';
 
-function Favorites(props) {
+function Favorites() {
   const { favorites } = useSelector(pokemon => pokemon);
-
-  function removeFromFav(pokemon) {
-    props.removeFromFav(pokemon);
-  }
 
   return (
     <div className="container">
       <div className="row">
         {favorites.map((pokemon, idx) => {
-          return (
-            <Card
-              key={idx}
-              dashboard={false}
-              id={pokemon.id}
-              pokemon={pokemon}
-              removeFromFav={(pokemon) => removeFromFav(pokemon)}
-            />
-          )
+          return <Card key={idx} pokemon={pokemon} />
         })}
       </div>
       {favorites.length < 1 &&

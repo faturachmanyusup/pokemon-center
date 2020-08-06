@@ -1,7 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 function Navbar() {
+  const search = useRef();
+  const history = useHistory()
+
+  function handleSearch(e) {
+    e.preventDefault();
+    const query = search.current.value.toLowerCase();
+    history.push({pathname: `/detail/${query}`});
+    search.current.value = '';
+  }
+
   return (
     <nav className="navbar navbar-expand-lg sticky-top">
       <div className="collapse navbar-collapse">
@@ -24,6 +34,10 @@ function Navbar() {
             <button className="nav-link btn">Detail</button>
           </li>
         </ul>
+        <form onSubmit={(event) => handleSearch(event)} className="form-inline my-2 my-lg-0">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" ref={search} />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
     </nav>
   );

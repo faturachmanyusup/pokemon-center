@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useData from '../hooks/useFetch';
+import useFetch from '../hooks/useFetch';
 
 function Detail() {
   const { pokemonName } = useParams();
   const target = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
-  const [pokemon, loading, error] = useData(target);
+  const [pokemon, loading, error] = useFetch(target);
 
   return (
     <div className="container detail d-flex justify-content-center mt-5">

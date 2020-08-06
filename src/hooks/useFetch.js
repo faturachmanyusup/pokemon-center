@@ -11,10 +11,12 @@ function useFetch(url) {
     .then(res => res.json())
     .then(data => {
       setData(data);
+      setError(null);
     })
     .catch(err => {
       console.log(err);
-      setError(err);
+      setData(null);
+      setError('pokemon not found');
     })
     .finally(() => setLoading(false));
   }, [url]);
