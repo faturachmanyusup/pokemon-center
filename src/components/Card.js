@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { addToFavorites, removeFromFavorites } from '../store/actions/favoriteActions'
 
 function Card(props) {
   const history = useHistory();
@@ -13,18 +14,12 @@ function Card(props) {
 
   function addToFav() {
     props.addToFav(props.pokemon);
-    dispatch({
-      type: "ADD_TO_FAVORITES",
-      payload: { pokemon: props.pokemon }
-    })
+    dispatch(addToFavorites(props.pokemon));
   }
 
   function removeFromFav() {
     props.removeFromFav(props.pokemon);
-    dispatch({
-      type: "REMOVE_FROM_FAVORITES",
-      payload: { pokemon: props.pokemon }
-    })
+    dispatch(removeFromFavorites(props.pokemon));
   }
 
   const button = () => {

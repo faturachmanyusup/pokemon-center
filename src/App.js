@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Dashboard, Detail, Favorites } from './pages';
 import Navbar from './components/Navbar';
-import useData from './hooks/useFetch';
+import useFatch from './hooks/useFetch';
 import { Provider } from 'react-redux';
 import store from './store';
 
 function App() {
   const [reactive, setReactive] = useState(0);
   const target = 'https://pokeapi.co/api/v2/pokemon?limit=200';
-  const [pokemons, loading, error] = useData(target);
+  const [pokemons, loading, error] = useFatch(target);
 
   function addToFav(pokemon) {
     const triggerReactive = reactive + 1;
