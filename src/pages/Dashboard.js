@@ -3,7 +3,7 @@ import Card from '../components/Card';
 
 function Dashboard(props) {
   return (
-    <div className="container">
+    <div className="container" data-testid="dashboard-page">
       { props.pokemons &&
         <div className="row">
         {props.pokemons.results.map((pokemon, idx) => {

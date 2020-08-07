@@ -6,7 +6,7 @@ function Favorites() {
   const { favorites } = useSelector(pokemon => pokemon);
 
   return (
-    <div className="container">
+    <div className="container" data-testid="favorites-page">
       <div className="row">
         {favorites.map((pokemon, idx) => {
           return <Card key={idx} pokemon={pokemon} />

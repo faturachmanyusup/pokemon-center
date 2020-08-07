@@ -13,9 +13,10 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top">
+    <nav data-testid="navbar" className="navbar navbar-expand-lg sticky-top">
       <div className="collapse navbar-collapse">
         <Link
+          data-testid="dashboard-link"
           type="button"
           className="navbar-brand btn"
           to="/">
@@ -24,6 +25,7 @@ function Navbar() {
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0 btn">
           <li className="nav-item">
             <Link
+              data-testid="favorites-link"
               className="nav-link btn"
               to="/favorites"
             >

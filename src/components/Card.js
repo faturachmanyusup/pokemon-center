@@ -53,7 +53,7 @@ function Card(props) {
   }
 
   return (
-    <div className="card pokemon-card mt-5 mb-3 col-2">
+    <div className="card pokemon-card mt-5 mb-3 col-2" data-testid="pokemons-card">
       <img
         className="card-img-top pt-3"
         onClick= {() => showDetail()}

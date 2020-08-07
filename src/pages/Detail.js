@@ -8,7 +8,7 @@ function Detail() {
   const [pokemon, loading, error] = useFetch(target);
 
   return (
-    <div className="container detail d-flex justify-content-center mt-5">
+    <div className="container detail d-flex justify-content-center mt-5" data-testid="detail-page">
       { pokemon &&
         <div className="card">
           <img className="card-img-top pt-4" src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />

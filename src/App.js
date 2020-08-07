@@ -36,6 +36,7 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Dashboard
+                  data-testid="dashboard-page"
                   pokemons={pokemons}
                   loading={loading}
                   error={error}
