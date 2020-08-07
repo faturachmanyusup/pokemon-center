@@ -3,9 +3,9 @@ import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe("App should work correcly", () => {
-  const { getByTestId } = render(<App />);
   
   test('App should have navbar', () => {
+    const { getByTestId } = render(<App />);
     const navbar = getByTestId('navbar');
     const dashboardPage = getByTestId('dashboard-page');
     expect(navbar).toBeInTheDocument();
