@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { favHandler } from '../App';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { getName } from '../helpers';
 import { addToFavorites, removeFromFavorites } from '../store/actions/favoritesActions';
 
 function Card(props) {
@@ -61,7 +62,7 @@ function Card(props) {
         src= {`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.pokemon.id}.svg`}
       />
       <div className="card-body">
-        <h5 className="card-title">{props.pokemon.name}</h5>
+        <h5 className="card-title">{getName(props.pokemon.name)}</h5>
         {button()}
       </div>
     </div>

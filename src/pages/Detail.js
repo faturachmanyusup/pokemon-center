@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import { getName } from '../helpers';
 
 function Detail() {
   const { pokemonName } = useParams();
@@ -14,8 +15,8 @@ function Detail() {
           <img className="card-img-top pt-4" src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
           <div className="card-body">
             <div className="d-flex justify-content-around pt-4">
-              <h4>{pokemon.name}</h4>
-              <h5>Type: {pokemon.types[0].type.name}</h5>
+              <h4>{getName(pokemon.name)}</h4>
+              <h5>Type: {getName(pokemon.types[0].type.name)}</h5>
             </div>
             <div className="row pt-5">
               <span className="col-3"><strong>HP</strong> : {pokemon.stats[0].base_stat}</span>
